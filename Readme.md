@@ -140,7 +140,7 @@ Note: Since the Server-time runs 4hrs behind IST, therefore need to modify time-
      ```
    3. Dropping Measurement using a script from GNB-Vm (VM-Ip: 172.167.0.203)
         ```bash
-            ./script/delete_influx_records.sh <MEASUREMENT_NAME>
+            ~/script/delete_influx_records.sh <MEASUREMENT_NAME>
         ```
      Note: In the setup, KPI are stored over `<MEASUREMENT_NAME>` = live_data
      
