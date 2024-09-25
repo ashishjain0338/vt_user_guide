@@ -97,7 +97,8 @@
           ```
     2. Gnb-Side-Traffic
         ```bash
-             ~/script/traffic-gen/iperf_lowdemand.sh <PDU_IP>
+            cd ~/script/traffic-gen/
+             python3 gen-traffic.py <PDU-IP>
           ```
 ## E) Grafana:
 1. VM-Ip: 172.167.1.215
