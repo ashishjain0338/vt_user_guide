@@ -13,12 +13,18 @@
     ```
     Note: Make sure after 'Fresh-build', the config file (~/ashish/ash_open5gs/build/configs/sample.yaml) contains right configuration
 
- 4. Logging:
+4. Logging:
     
     To check currently connected-ue's and their PDU-Ip's
     ```bash
       cat ~/ashish/ash_open5gs/build/tests/app/pdu_info.txt
     ```
+5. TroubleShooting:
+    1. Killing Core:
+     ```bash
+        ps -e|grep open5gs|awk '{print $1}'| xargs kill
+     ```
+
    
 ## B) Gnb:
 1. VM-Ip: 172.167.0.203
@@ -39,14 +45,24 @@
     ```bash
     cat ~/ashish/ash_srsRAN_project/build/apps/gnb/dlprb_slice.csv
     ```
+5. TroubleShooting:
+    1. Killing Gnb:
+     ```bash
+        ps -e|grep gnb|awk '{print $1}'| sudo xargs kill
+     ```
 
-## C) Kafka-Consumer:
+## C) Kafka-Consumer & Pdu-Info-Writer:
 1. VM-Ip: 172.167.0.203
-2. Deployment:
+2. Deployment(Kafka-Consumer):
   ```bash
     ~/script/run_kafka_consumer.sh
   ```
-3. TroubleShooting:
+3. Deployment (Pdu-Info-Writer):
+  ```bash
+    # Starting the script to update Pdu-info in influxdb (to be shown in Grafana)
+    ~/script/run_pdu_info_writer.sh
+  ```
+4. TroubleShooting:
     1. Creating Kafka Topic:
      ```bash
         ~/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic <TOPIC>
